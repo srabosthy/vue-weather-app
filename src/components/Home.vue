@@ -6,6 +6,9 @@
     <form @submit.prevent="getWeather" class="text-center mt-2 bg-gray-200 p-4 shadow-lg rounded-xl mx-auto max-w-sm">
       <input type="text"  placeholder="Search City" v-model="citySearch" class="bg-gray-200 text-gray-600 rounded-md p-1 w-4/5 text-center">
     </form>
+    <div v-if="error" class="text-center mt-1 bg-red-200 p-4 shadow-lg rounded-xl mx-auto max-w-sm">
+      <h2 class=" text-md font-bold text-gray-200"> Vue Weather</h2>
+    </div>
     <div class="text-center mt-2 bg-gray-300 p-4 shadow-lg rounded-xl mx-auto max-w-sm">
       <h2 class=" text-gray-600 font-normal text-2xl">{{ city }}</h2>
       <h2 class=" text-gray-500 font-light text-sm ">{{ condition }}</h2>
@@ -20,6 +23,7 @@ import axios from 'axios'
 export default {
   data() {
     return {
+      error: '',
       accesKey : "5299e83c9cf2fef510fb8ddaa3206ac8",
       city : 'dhaka',
       citySearch : '',
@@ -58,9 +62,10 @@ export default {
         this.max_temp = response.main.temp_max;
         this.min_temp = response.main.temp_min;
         this.city = this.citySearch;
+        this.error = '';
       } catch (error) {
-        alert(error.message);
-        // console.log(error);
+        this.error = '';
+        console.log(error.message);
       }
     },
   }
