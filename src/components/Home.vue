@@ -6,8 +6,8 @@
     <form @submit.prevent="getWeather" class="text-center mt-2 bg-gray-200 p-4 shadow-lg rounded-xl mx-auto max-w-sm">
       <input type="text"  placeholder="Search City" v-model="citySearch" class="bg-gray-200 text-gray-600 rounded-md p-1 w-4/5 text-center">
     </form>
-    <div v-if="error" class="text-center mt-1 bg-red-200 p-4 shadow-lg rounded-xl mx-auto max-w-sm">
-      <h2 class=" text-md font-bold text-gray-200"> Vue Weather</h2>
+    <div v-if="error" class="text-center animate-pulse mt-1 bg-red-500 opacity-50 p-4 shadow-lg rounded-xl mx-auto max-w-sm">
+      <h2 class=" text-md font-bold text-gray-900"> Vue Weather</h2>
     </div>
     <div class="text-center mt-2 bg-gray-300 p-4 shadow-lg rounded-xl mx-auto max-w-sm">
       <h2 class=" text-gray-600 font-normal text-2xl">{{ city }}</h2>
@@ -64,7 +64,7 @@ export default {
         this.city = this.citySearch;
         this.error = '';
       } catch (error) {
-        this.error = '';
+        this.error = error.message;
         console.log(error.message);
       }
     },
