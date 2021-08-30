@@ -3,13 +3,13 @@
     <div class="text-center mt-1 bg-gray-100 p-4 shadow-lg rounded-xl mx-auto max-w-sm">
       <h2 class=" text-3xl font-bold text-gray-600"> Vue Weather</h2>
     </div>
-    <form @submit.prevent="getWeather" class="text-center mt-2 bg-gray-200 p-4 shadow-lg rounded-xl mx-auto max-w-sm">
-      <input type="text"  placeholder="Search City" v-model="citySearch" class="bg-gray-200 text-gray-600 rounded-md p-1 w-4/5 text-center">
+    <form @submit.prevent="getWeather" :class="[ error ? 'bg-red-300 animate-pulse' : 'bg-gray-300' ]" class="text-center mt-2  p-4 shadow-lg rounded-xl mx-auto max-w-sm">
+      <input type="text"  placeholder="Search City" v-model="citySearch" :class="[ error ? 'bg-red-200 animate-pulse' : 'bg-gray-200' ]" class="shadow-md text-gray-600 rounded-md p-1 w-4/5 text-center">
     </form>
-    <div v-if="error" class="text-center animate-pulse mt-1 bg-red-500 opacity-50 p-4 shadow-lg rounded-xl mx-auto max-w-sm">
-      <h2 class=" text-md font-bold text-gray-900"> Vue Weather</h2>
-    </div>
-    <div class="text-center mt-2 bg-gray-300 p-4 shadow-lg rounded-xl mx-auto max-w-sm">
+    <!-- <div v-if="error" class="text-center animate-pulse mt-1 bg-red-300 opacity-20 p-4 shadow-2xl rounded-xl mx-auto max-w-sm">
+      <h2 class=" text-md font-bold text-black"> Wrong City! </h2>
+    </div> -->
+    <div class="text-center mt-1 bg-gray-300 p-4 shadow-lg rounded-xl mx-auto max-w-sm">
       <h2 class=" text-gray-600 font-normal text-2xl">{{ city }}</h2>
       <h2 class=" text-gray-500 font-light text-sm ">{{ condition }}</h2>
       <h2 class="text-6xl font-light text-gray-600">{{ Math.round(temp) }}°</h2>
@@ -63,6 +63,7 @@ export default {
         this.min_temp = response.main.temp_min;
         this.city = this.citySearch;
         this.error = '';
+        this.citySearch = '';
       } catch (error) {
         this.error = error.message;
         console.log(error.message);
