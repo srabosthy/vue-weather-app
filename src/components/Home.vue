@@ -9,7 +9,7 @@
     <!-- <div v-if="error" class="text-center animate-pulse mt-1 bg-red-300 opacity-20 p-4 shadow-2xl rounded-xl mx-auto max-w-sm">
       <h2 class=" text-md font-bold text-black"> Wrong City! </h2>
     </div> -->
-    <div class="text-center mt-1 bg-gray-300 p-4 shadow-lg rounded-xl mx-auto max-w-sm">
+    <div class="text-center mt-2 bg-gray-300 p-4 shadow-lg rounded-xl mx-auto max-w-sm">
       <h2 class=" text-gray-600 font-normal text-2xl">{{ city }}</h2>
       <h2 class=" text-gray-500 font-light text-sm ">{{ condition }}</h2>
       <h2 class="text-6xl font-light text-gray-600">{{ Math.round(temp) }}°</h2>
