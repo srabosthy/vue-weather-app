@@ -1,5 +1,8 @@
 # vue-weather-app
 
+## Live Site
+> [Live Weather](https://weather-sonu.netlify.app/)
+
 ## Project setup
 ```
 npm install
